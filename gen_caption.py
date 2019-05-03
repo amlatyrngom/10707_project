@@ -7,6 +7,7 @@ from keras.preprocessing.image import img_to_array
 from keras.applications.vgg16 import preprocess_input
 from keras.models import Model
 from keras.models import load_model
+import sys
 
 # extract features from each photo in the directory
 def extract_features(filename):
@@ -73,8 +74,10 @@ max_detection_length = 29
 filename = 'models.old1/model-ep6-loss3.566-val_loss3.961.h5'
 model = load_model(filename)
 # load and prepare the photograph
-key = 'test9'
-photo = extract_features('pexels-photo-1595387.jpeg')
+img_file = sys.argv[1]
+
+key = img_file.split('/')[-1].split('.')[0]
+photo = extract_features(img_file)
 # generate description
 
 if key not in detected_objects:

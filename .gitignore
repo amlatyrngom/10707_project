@@ -1,3 +1,6 @@
 *.pkl
 models.old1/*
 Flick*
+*.jpg
+*.png
+*.txt

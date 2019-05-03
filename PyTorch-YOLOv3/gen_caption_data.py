@@ -32,6 +32,7 @@ parser.add_argument('--batch_size', type=int, default=1, help='size of the batch
 parser.add_argument('--n_cpu', type=int, default=8, help='number of cpu threads to use during batch generation')
 parser.add_argument('--img_size', type=int, default=416, help='size of each image dimension')
 parser.add_argument('--use_cuda', type=bool, default=True, help='whether to use cuda if available')
+parser.add_argument('--gen_data', type=str, default="train", help='whether to generate training or testing data')
 opt = parser.parse_args()
 print(opt)
 
@@ -95,8 +96,7 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
         file_objects[file_id] = [classes[int(c[6])] for c in detections]
         object_coords[file_id] = [c[:4] for c in detections]
 
-gen_files = False
-if (gen_files):
+if (opt.gen_data=="train"):
     dump(file_objects, open('detected_objects.pkl', 'wb'))
     dump(object_coords, open('object_coords.pkl', 'wb'))
 else:
