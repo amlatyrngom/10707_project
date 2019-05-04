@@ -1,7 +1,0 @@
-BLEU-1: 0.567830
-BLEU-2: 0.316076
-BLEU-3: 0.218267
-BLEU-4: 0.103695
-
-
-startseq man in red shirt is standing on rock endseq
